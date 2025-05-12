@@ -61,12 +61,12 @@ function TaskList() {
   });
 
   return (
-    <main className="task-list flex flex-col items-center gap-8">
-      <h2 className="text-2xl font-semibold text-[#eee7e7 border-b-2 border-[#edc84b] pb-2 mb-4">
-        Tasks{" "}
+    <main className="text-2xl font-semibold relative mb-8">
+      <h2 className="text-2xl font-semibold text-[#eee7e7] text-center border-b-2 border-[#edc84b] pb-2 mb-4">
+        Tasks<span className="block h-1 w-16 bg-yellow-400 mt-1 mx-auto"></span>
       </h2>
 
-      <ul className="tasks grid grid-cols-2 gap-6 max-w-[800px] w-full list-none">
+      <ul className="tasks text-[#FFFFFF] grid grid-cols-1 sm grid-cols-2 gap-y-10 gap-x-6  max-w-4xl w-full">
         {filteredTasks.map((tasks) => (
           <TaskItem
             key={tasks.id}
@@ -79,7 +79,7 @@ function TaskList() {
       <div className="task-input flex gap-4 mb-8 w-full max-w-2xl">
         <button
           onClick={() => setFilter("all")}
-          className="px-5 py-3 text-base bg-[#edc84b] text-black rounded-md hover:bg-[#f1d465]"
+          className="px-5 py-3 text-base bg-[#edc84b] text-black rounded-md hover:bg-[#f1d465] shadow"
         >
           All
         </button>

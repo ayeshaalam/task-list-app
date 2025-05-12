@@ -6,12 +6,11 @@ import "./index.css";
 
 function App() {
   return (
-    <header className="header mb-12 relative text-center">
-      <h1 className="text-[#edc84b] uppercase text-4xl before:top-1/2 before:-translate-y-1/2 before:left-[-100px] before:w-20 before:h-[2px] before:bg-[#edc84b] after:content-[''] after:absolute after:top-1/2 after:-translate-y-1/2 after:right-[-100px] after:w-20 after:h-[2px] after:bg-[#edc84b]">
-        <span className="before:content-[''] before:absolute before:top-1/2 before:-translate-y-1/2 before:left-[-100px] before:w-20 before:h-[2px] before:bg-[#edc84b] after:content-[''] after:absolute after:top-1/2 after:-translate-y-1/2 after:right-[-100px] after:w-20 after:h-[2px] after:bg-[#edc84b]">
-          TASK list
-        </span>
-      </h1>
+    <header
+      className=" flex flex-col items-center 
+    bg-[#1f1f1f] min-h-screen p-8 text-white "
+    >
+      <h1 className="text-5xl font-bold text-[#edc84b] 400  mb-4">TASK list</h1>
       <TaskList />
     </header>
   );

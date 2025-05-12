@@ -12,8 +12,11 @@ function TaskItem({ tasksObj, onComplete, onEdit }: TaskItemProps) {
   const [isEditing, setEditing] = useState(false);
 
   return (
-    <li className="task bg-[#d4d4d3] p-5 rounded-lg shadow-md flex flex-col gap-2">
-      <span className="font-bold text-[#888]">{tasksObj.id}</span>
+    <li
+      className="
+    bg-[#2a2a2a] text-[#FFFFFF] rounded-xl p-6 shadow-lg flex flex-col gap-3 border border-yellow-400"
+    >
+      <span className="text-sm font-semibold text-gray-400">{tasksObj.id}</span>
 
       {isEditing ? (
         <TaskEdit
@@ -30,11 +33,21 @@ function TaskItem({ tasksObj, onComplete, onEdit }: TaskItemProps) {
           <strong>{tasksObj.text}</strong>
           {!tasksObj.completed ? (
             <>
-              <button onClick={() => onComplete(tasksObj.id)}>Complete</button>
+              <button
+                onClick={() => onComplete(tasksObj.id)}
+                className="bg-yellow-400 hover:bg-yellow-300 text-black px-4 py-2 rounded-md"
+              >
+                Complete
+              </button>
+              <button
+                onClick={() => setEditing(true)}
+                className="bg-yellow-400 hover:bg-yellow-300 text-black px-4 py-2 rounded-md"
+              >
+                Edit
+              </button>
             </>
           ) : (
             <div>
-              <button onClick={() => setEditing(true)}>Edit</button>
               <span className="text-green-600 font-bold">✅ Done</span>
             </div>
           )}
