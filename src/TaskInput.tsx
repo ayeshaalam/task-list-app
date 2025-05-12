@@ -11,7 +11,7 @@ function TaskInput({ onAdd }: TaskInputProps) {
     setNewTask("");
   }
   return (
-    <div className="task-input flex gap-4 mb-8 w-full max-w-2xl">
+    <div className="task-input flex justify-center gap-4 mb-8 w-full max-w-2xl">
       <input
         className="px-4 py-3 text-base border-2 border-gray-300 rounded grow"
         type="text"

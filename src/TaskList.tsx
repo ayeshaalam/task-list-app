@@ -23,6 +23,11 @@ function TaskList() {
         ];
   });
 
+  //filtering
+  const [filter, setFilter] = useState<"all" | "completed" | "incomplete">(
+    "all"
+  );
+
   // Save tasks to localStorage whenever tasks change
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -42,6 +47,19 @@ function TaskList() {
     setTasks(updated);
   }
 
+  function handleEditTask(id: number, newTask: string) {
+    const updated = tasks.map((task) =>
+      task.id === id ? { ...task, text: newTask } : task
+    );
+    setTasks(updated);
+  }
+
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "completed") return task.completed;
+    if (filter === "incomplete") return !task.completed;
+    return true;
+  });
+
   return (
     <main className="task-list flex flex-col items-center gap-8">
       <h2 className="text-2xl font-semibold text-[#eee7e7 border-b-2 border-[#edc84b] pb-2 mb-4">
@@ -49,14 +67,35 @@ function TaskList() {
       </h2>
 
       <ul className="tasks grid grid-cols-2 gap-6 max-w-[800px] w-full list-none">
-        {tasks.map((tasks) => (
+        {filteredTasks.map((tasks) => (
           <TaskItem
             key={tasks.id}
             tasksObj={tasks}
             onComplete={handleCompleted}
+            onEdit={handleEditTask}
           />
         ))}
       </ul>
+      <div className="task-input flex gap-4 mb-8 w-full max-w-2xl">
+        <button
+          onClick={() => setFilter("all")}
+          className="px-5 py-3 text-base bg-[#edc84b] text-black rounded-md hover:bg-[#f1d465]"
+        >
+          All
+        </button>
+        <button
+          onClick={() => setFilter("completed")}
+          className="px-5 py-3 text-base bg-[#edc84b] text-black rounded-md hover:bg-[#f1d465]"
+        >
+          Completed
+        </button>
+        <button
+          onClick={() => setFilter("incomplete")}
+          className="px-5 py-3 text-base bg-[#edc84b] text-black rounded-md hover:bg-[#f1d465]"
+        >
+          Incomplete
+        </button>
+      </div>
       <TaskInput onAdd={handleAddTask} />
     </main>
   );
